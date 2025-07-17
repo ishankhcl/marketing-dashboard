@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HCL Aftermarket Cloud - Marketing Activity Dashboard</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header class="dashboard-header">
+            <div class="header-content">
+                <h1>Marketing Activity Dashboard</h1>
+                <p class="header-subtitle">HCL Aftermarket Cloud - Product Marketing Manager</p>
+            </div>
+            
+            <!-- Controls -->
+            <div class="controls">
+                <div class="search-container">
+                    <input type="text" class="form-control search-input" placeholder="Search tasks..." id="searchInput">
+                </div>
+                
+                <div class="filter-container">
+                    <select class="form-control filter-select" id="dayFilter">
+                        <option value="">All Days</option>
+                        <option value="Monday">Monday</option>
+                        <option value="Tuesday">Tuesday</option>
+                        <option value="Wednesday">Wednesday</option>
+                        <option value="Thursday">Thursday</option>
+                        <option value="Friday">Friday</option>
+                    </select>
+                    
+                    <select class="form-control filter-select" id="categoryFilter">
+                        <option value="">All Categories</option>
+                        <option value="digitalMarketing">Digital Marketing</option>
+                        <option value="seo">Website & SEO</option>
+                        <option value="leadGeneration">Lead Generation</option>
+                        <option value="meetings">Meetings</option>
+                        <option value="collaterals">Marketing Collaterals</option>
+                        <option value="newsletter">Newsletter & Content</option>
+                        <option value="thailand">Thailand Pilot</option>
+                        <option value="podcast">Podcast</option>
+                        <option value="analytics">Analytics & Reporting</option>
+                    </select>
+                </div>
+                
+                <button class="btn btn--primary add-task-btn" id="addTaskBtn">
+                    <span class="btn-icon">+</span>
+                    Add Task
+                </button>
+            </div>
+        </header>
+
+        <!-- Kanban Board -->
+        <div class="kanban-board">
+            <div class="kanban-column" data-status="todo">
+                <div class="column-header">
+                    <h3>To Do</h3>
+                    <span class="task-count" id="todoCount">0</span>
+                </div>
+                <div class="column-content" id="todoColumn">
+                    <!-- Tasks will be populated here -->
+                </div>
+            </div>
+            
+            <div class="kanban-column" data-status="inprogress">
+                <div class="column-header">
+                    <h3>In Progress</h3>
+                    <span class="task-count" id="inprogressCount">0</span>
+                </div>
+                <div class="column-content" id="inprogressColumn">
+                    <!-- Tasks will be populated here -->
+                </div>
+            </div>
+            
+            <div class="kanban-column" data-status="done">
+                <div class="column-header">
+                    <h3>Done</h3>
+                    <span class="task-count" id="doneCount">0</span>
+                </div>
+                <div class="column-content" id="doneColumn">
+                    <!-- Tasks will be populated here -->
+                </div>
+            </div>
+        </div>
+
+        <!-- Add Task Modal -->
+        <div class="modal-overlay" id="taskModal">
+            <div class="modal">
+                <div class="modal-header">
+                    <h2 id="modalTitle">Add New Task</h2>
+                    <button class="modal-close" id="closeModal">&times;</button>
+                </div>
+                <div class="modal-body">
+                    <form id="taskForm">
+                        <div class="form-group">
+                            <label for="taskTitle" class="form-label">Task Title</label>
+                            <input type="text" class="form-control" id="taskTitle" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="taskCategory" class="form-label">Category</label>
+                            <select class="form-control" id="taskCategory" required>
+                                <option value="">Select Category</option>
+                                <option value="digitalMarketing">Digital Marketing</option>
+                                <option value="seo">Website & SEO</option>
+                                <option value="leadGeneration">Lead Generation</option>
+                                <option value="meetings">Meetings</option>
+                                <option value="collaterals">Marketing Collaterals</option>
+                                <option value="newsletter">Newsletter & Content</option>
+                                <option value="thailand">Thailand Pilot</option>
+                                <option value="podcast">Podcast</option>
+                                <option value="analytics">Analytics & Reporting</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="taskDay" class="form-label">Day</label>
+                            <select class="form-control" id="taskDay" required>
+                                <option value="">Select Day</option>
+                                <option value="Monday">Monday</option>
+                                <option value="Tuesday">Tuesday</option>
+                                <option value="Wednesday">Wednesday</option>
+                                <option value="Thursday">Thursday</option>
+                                <option value="Friday">Friday</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="taskPriority" class="form-label">Priority</label>
+                            <select class="form-control" id="taskPriority" required>
+                                <option value="">Select Priority</option>
+                                <option value="High">High</option>
+                                <option value="Medium">Medium</option>
+                                <option value="Low">Low</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="taskDescription" class="form-label">Description</label>
+                            <textarea class="form-control" id="taskDescription" rows="3"></textarea>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="taskStatus" class="form-label">Status</label>
+                            <select class="form-control" id="taskStatus" required>
+                                <option value="todo">To Do</option>
+                                <option value="inprogress">In Progress</option>
+                                <option value="done">Done</option>
+                            </select>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn--secondary" id="cancelBtn">Cancel</button>
+                    <button type="submit" class="btn btn--primary" id="saveTaskBtn">Save Task</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
